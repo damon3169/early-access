@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dm77bioe2ruue"
+path="res://.godot/imported/sfx_jump.ogg-f6d3bcf4081da7298aeef99f0682c784.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/2D/Kenney Platformer/Sounds/sfx_jump.ogg"
+dest_files=["res://.godot/imported/sfx_jump.ogg-f6d3bcf4081da7298aeef99f0682c784.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

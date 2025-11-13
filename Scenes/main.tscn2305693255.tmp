@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr64xg7telav"]
+
+[ext_resource type="PackedScene" uid="uid://dl3fejt46jpii" path="res://Prefabs/player.tscn" id="1_jjgbg"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jjgbg"]
+geometry_parsed_geometry_type = 0
+cell_size = 1.0
+cell_height = 1.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8239284, 0.5666939, 0, -0.5666939, 0.8239284, 0, 4.1421595, 2.9659152)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(55.160507, 0, 0, 0, 0.99743193, 0, 0, 0, 57.078, 0, -1.5389682, 0)
+use_collision = true
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9366162, 0, 0, 0, 1, 0, 0, -4.5034695)
+use_collision = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_jjgbg")

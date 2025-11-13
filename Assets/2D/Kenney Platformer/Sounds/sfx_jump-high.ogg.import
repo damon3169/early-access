@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8oaxssmobbs3"
+path="res://.godot/imported/sfx_jump-high.ogg-442c4d19f677093a594a893dd99ec687.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/2D/Kenney Platformer/Sounds/sfx_jump-high.ogg"
+dest_files=["res://.godot/imported/sfx_jump-high.ogg-442c4d19f677093a594a893dd99ec687.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

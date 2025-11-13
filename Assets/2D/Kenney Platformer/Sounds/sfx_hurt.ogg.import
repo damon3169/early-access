@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmnu44bsj11ss"
+path="res://.godot/imported/sfx_hurt.ogg-4f17ea81c3f90a9dc270ed534dafb6ab.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/2D/Kenney Platformer/Sounds/sfx_hurt.ogg"
+dest_files=["res://.godot/imported/sfx_hurt.ogg-4f17ea81c3f90a9dc270ed534dafb6ab.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

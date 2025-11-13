@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bgp0veem0hu6q"
+path="res://.godot/imported/sfx_select.ogg-9061b15d73298c6d386a43b031ae381d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/2D/Kenney Platformer/Sounds/sfx_select.ogg"
+dest_files=["res://.godot/imported/sfx_select.ogg-9061b15d73298c6d386a43b031ae381d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr64xg7telav"]
+
+[ext_resource type="PackedScene" uid="uid://dl3fejt46jpii" path="res://Prefabs/player.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://btar517ndepaj" path="res://Scripts/PlayerController2D.gd" id="2_8gbba"]
+[ext_resource type="Texture2D" uid="uid://nipa0wtwy6ti" path="res://Assets/2D/Kenney Platformer/Sprites/Characters/Default/character_beige_front.png" id="2_bo1nx"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jjgbg"]
+vertices = PackedVector3Array(-4.5, 1, -4.5, -4.5, 1, 4.5, 4.5, 1, 4.5, 4.5, 1, -4.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_collision_mask = 4294967041
+cell_height = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
+size = Vector2(1391, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jjgbg"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8239284, 0.5666939, 0, -0.5666939, 0.8239284, 0, 4.1421595, 2.9659152)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9366162, 0, 0, 0, 1, 0, 1, -4.5034695)
+use_collision = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_jjgbg")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.5, 0)
+use_collision = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(10.5, 334)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, 309)
+disable_mode = 2
+script = ExtResource("2_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_jjgbg")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+position = Vector2(0, -4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_bo1nx")
