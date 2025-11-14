@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var isGrabing = true
+signal grabMovement(input: Vector2)
 
 
 func _physics_process(delta: float) -> void:
@@ -17,9 +19,17 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
+	if !isGrabing:
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		grabMovement.emit(Input.get_vector("left", "right", "forward", "back"))
 	move_and_slide()
+	isGrabing=false
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if (collision.get_collider().is_in_group("Grabable")):
+			if Input.is_action_pressed("grab"):
+				isGrabing = true

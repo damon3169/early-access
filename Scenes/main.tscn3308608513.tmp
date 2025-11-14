@@ -87,5 +87,3 @@ shape = SubResource("CircleShape2D_kry3j")
 
 [node name="Lever" type="Sprite2D" parent="Objects2D/RigidBody2D/CollisionShape2D"]
 texture = ExtResource("3_kry3j")
-
-[connection signal="grabMovement" from="Player1" to="Player" method="_on_player_1_grab_movement"]

@@ -36,21 +36,14 @@ func set_movement_target(target_position: Vector3):
 		current_path_point = current_path[0]
 		
 
+func moveCharacter(input:Vector2):
+	if input != Vector2.ZERO  && !moving:
+		if (gridMapArray.has(myCell+Vector3i(input.x,0.0,input.y))):
+			moving = true
+			myCell+=Vector3i(input.x,0.0,input.y)
+			set_movement_target(gridMap.map_to_local(myCell))
 
 func _physics_process(delta):
-	velocity.y += -gravity * delta
-	var input = Input.get_vector("left", "right", "forward", "back")
-	if input != Vector2.ZERO  && !moving:
-		
-		if (gridMapArray.has(myCell+Vector3i(input.x,0,input.y))):
-			moving = true
-			myCell+=Vector3i(input.x,0,input.y)
-			set_movement_target(gridMap.map_to_local(myCell))
-	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
-	velocity.x = movement_dir.x * speed
-	velocity.z = movement_dir.z * speed
-
-	#move_and_slide()
 	
 	if current_path.is_empty():
 		return
@@ -83,3 +76,8 @@ func _input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
+
+
+func _on_player_1_grab_movement(input: Vector2) -> void:
+	moveCharacter(input)
+	pass # Replace with function body.
