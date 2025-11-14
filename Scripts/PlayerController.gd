@@ -13,8 +13,13 @@ var current_path_point: Vector3
 var current_path: PackedVector3Array
 var moving = false
 var cellLength = 1
+var myCell = Vector3i.ZERO
+var gridMap 
+var gridMapArray
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	gridMap = $"../NavigationRegion3D/GridMap"
+	gridMapArray=gridMap.get_used_cells()
 	
 func set_movement_target(target_position: Vector3):
 
@@ -35,10 +40,12 @@ func set_movement_target(target_position: Vector3):
 func _physics_process(delta):
 	velocity.y += -gravity * delta
 	var input = Input.get_vector("left", "right", "forward", "back")
-	print($"../NavigationRegion3D/GridMap".map_to_local(Vector3i(1,0,0)))
 	if input != Vector2.ZERO  && !moving:
-		moving = true
-		set_movement_target(global_transform.origin+Vector3(input.x*cellLength,0,input.y*cellLength))
+		
+		if (gridMapArray.has(myCell+Vector3i(input.x,0,input.y))):
+			moving = true
+			myCell+=Vector3i(input.x,0,input.y)
+			set_movement_target(gridMap.map_to_local(myCell))
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
