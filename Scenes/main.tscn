@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr64xg7telav"]
+[gd_scene load_steps=13 format=3 uid="uid://cr64xg7telav"]
 
 [ext_resource type="PackedScene" uid="uid://dl3fejt46jpii" path="res://Prefabs/player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://b1l8cly8sy6f2" path="res://Scripts/PlayerController2D.gd" id="2_8gbba"]
 [ext_resource type="Texture2D" uid="uid://nipa0wtwy6ti" path="res://Assets/2D/Kenney Platformer/Sprites/Characters/Default/character_beige_front.png" id="2_bo1nx"]
-[ext_resource type="ArrayMesh" uid="uid://c0encd5xp85om" path="res://Assets/2D/Kenney Golf Course/Models/OBJ format/bump-down.obj" id="2_jjvhh"]
+[ext_resource type="ArrayMesh" uid="uid://c0encd5xp85om" path="res://Assets/3D/Kenney Golf Course/Models/OBJ format/bump-down.obj" id="2_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://xduhdrue4tnb" path="res://Assets/2D/Kenney Platformer/Sprites/Tiles/Default/lever.png" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://bqit0kv43l5vj" path="res://Scenes/lever_movement.gd" id="5_21xkr"]
+[ext_resource type="Script" uid="uid://cp6ghvnc4sovk" path="res://Scenes/rotation_lever.gd" id="7_6bp64"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jjgbg"]
 vertices = PackedVector3Array(-11.74995, 1, -7.74995, -11.74995, 1, -7.24995, -11.24995, 1, -7.24995, -11.24995, 1, -7.74995, -6.7499504, 1, -3.74995, -6.7499504, 1, -3.24995, -5.9999504, 1, -3.24995, -4.7499504, 1, -3.99995, -4.7499504, 1, -7.74995, -4.9999504, 1, -6.74995, -4.7499504, 1, -4.99995, -1.2499504, 1, -4.99995, -1.2499504, 1, -7.74995, -5.7499504, 1, -6.74995, -5.7499504, 1, -5.24995, -4.7499504, 1, -1.9999499, -3.9999504, 1, -0.24994993, -1.7499504, 1, 1.0000501, -0.24995041, 1, -3.74995, -5.7499504, 1, -2.24995, -4.7499504, 1, -0.24994993, -3.7499504, 1, 0.75005007, -0.4999504, 2.5, -4.74995, 0.2500496, 2.5, -4.24995, 0.2500496, 2.5, -4.99995, 1.0000496, 1, 2.75005, 1.2500496, 1, 3.75005, 1.7500496, 1, 3.75005, 2.0000496, 1, 2.75005, 5.7500496, 1, -4.74995, 0.7500496, 1, -4.74995, 0.5000496, 1, -3.74995, 3.0000496, 1, 2.75005, 5.0000496, 1, 3.75005, 5.2500496, 1, 4.75005, 5.7500496, 1, 4.75005, 3.2500496, 1, 3.75005, -1.7499504, 1, 2.75005)
@@ -61,10 +63,11 @@ data = {
 position = Vector2(10.5, 334)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2D"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_bo1nx")
 
-[node name="Player1" type="CharacterBody2D" parent="."]
-position = Vector2(0, 309)
+[node name="Player1" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(0, 305)
 disable_mode = 2
 script = ExtResource("2_8gbba")
 
@@ -76,16 +79,29 @@ position = Vector2(0, -4)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_bo1nx")
 
-[node name="Objects2D" type="Node2D" parent="."]
+[node name="Objects" type="Node2D" parent="."]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Objects2D" groups=["Grabable"]]
-position = Vector2(299, 314)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects2D/RigidBody2D"]
+[node name="Movement Lever" type="Area2D" parent="Objects"]
+position = Vector2(17, 314)
 scale = Vector2(0.3, 0.3)
+script = ExtResource("5_21xkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Movement Lever"]
 shape = SubResource("CircleShape2D_kry3j")
 
-[node name="Lever" type="Sprite2D" parent="Objects2D/RigidBody2D/CollisionShape2D"]
+[node name="Lever" type="Sprite2D" parent="Objects/Movement Lever/CollisionShape2D"]
 texture = ExtResource("3_kry3j")
 
-[connection signal="grabMovement" from="Player1" to="Player" method="_on_player_1_grab_movement"]
+[node name="Rotation Lever" type="Area2D" parent="Objects"]
+position = Vector2(-32, 314)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("7_6bp64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Rotation Lever"]
+shape = SubResource("CircleShape2D_kry3j")
+
+[node name="Lever" type="Sprite2D" parent="Objects/Rotation Lever/CollisionShape2D"]
+texture = ExtResource("3_kry3j")
+
+[connection signal="grabMovement" from="Objects/Movement Lever" to="Player" method="_on_area_2d_grab_movement"]
+[connection signal="grabRotation" from="Objects/Rotation Lever" to="Player" method="_on_rotation_lever_grab_rotation"]

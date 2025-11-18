@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://phbj31kcyckp"
+path="res://.godot/imported/structure-gates.obj-11fd09d2924b4509237de115640b711f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure-gates.obj-11fd09d2924b4509237de115640b711f.mesh"]
+
+source_file="res://Assets/3D/Kenney Golf Course/Models/OBJ format/structure-gates.obj"
+dest_files=["res://.godot/imported/structure-gates.obj-11fd09d2924b4509237de115640b711f.mesh", "res://.godot/imported/structure-gates.obj-11fd09d2924b4509237de115640b711f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://cr64xg7telav"]
+
+[ext_resource type="PackedScene" uid="uid://dl3fejt46jpii" path="res://Prefabs/player.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://b1l8cly8sy6f2" path="res://Scripts/PlayerController2D.gd" id="2_8gbba"]
+[ext_resource type="Texture2D" uid="uid://nipa0wtwy6ti" path="res://Assets/2D/Kenney Platformer/Sprites/Characters/Default/character_beige_front.png" id="2_bo1nx"]
+[ext_resource type="ArrayMesh" uid="uid://c0encd5xp85om" path="res://Assets/3D/Kenney Golf Course/Models/OBJ format/bump-down.obj" id="2_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://xduhdrue4tnb" path="res://Assets/2D/Kenney Platformer/Sprites/Tiles/Default/lever.png" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://bqit0kv43l5vj" path="res://Scenes/lever_movement.gd" id="5_21xkr"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jjgbg"]
+vertices = PackedVector3Array(-11.74995, 1, -7.74995, -11.74995, 1, -7.24995, -11.24995, 1, -7.24995, -11.24995, 1, -7.74995, -6.7499504, 1, -3.74995, -6.7499504, 1, -3.24995, -5.9999504, 1, -3.24995, -4.7499504, 1, -3.99995, -4.7499504, 1, -7.74995, -4.9999504, 1, -6.74995, -4.7499504, 1, -4.99995, -1.2499504, 1, -4.99995, -1.2499504, 1, -7.74995, -5.7499504, 1, -6.74995, -5.7499504, 1, -5.24995, -4.7499504, 1, -1.9999499, -3.9999504, 1, -0.24994993, -1.7499504, 1, 1.0000501, -0.24995041, 1, -3.74995, -5.7499504, 1, -2.24995, -4.7499504, 1, -0.24994993, -3.7499504, 1, 0.75005007, -0.4999504, 2.5, -4.74995, 0.2500496, 2.5, -4.24995, 0.2500496, 2.5, -4.99995, 1.0000496, 1, 2.75005, 1.2500496, 1, 3.75005, 1.7500496, 1, 3.75005, 2.0000496, 1, 2.75005, 5.7500496, 1, -4.74995, 0.7500496, 1, -4.74995, 0.5000496, 1, -3.74995, 3.0000496, 1, 2.75005, 5.0000496, 1, 3.75005, 5.2500496, 1, 4.75005, 5.7500496, 1, 4.75005, 3.2500496, 1, 3.75005, -1.7499504, 1, 2.75005)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(13, 9, 14), PackedInt32Array(14, 9, 10), PackedInt32Array(15, 7, 16), PackedInt32Array(16, 7, 17), PackedInt32Array(17, 7, 18), PackedInt32Array(18, 7, 11), PackedInt32Array(19, 6, 15), PackedInt32Array(15, 6, 7), PackedInt32Array(16, 20, 15), PackedInt32Array(7, 10, 11), PackedInt32Array(17, 21, 16), PackedInt32Array(24, 23, 22), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(32, 29, 33), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 29), PackedInt32Array(33, 36, 32), PackedInt32Array(25, 37, 17), PackedInt32Array(28, 25, 17), PackedInt32Array(28, 17, 32), PackedInt32Array(32, 17, 31), PackedInt32Array(31, 17, 18)]
+geometry_collision_mask = 4294967041
+cell_height = 0.5
+agent_height = 1.0
+agent_radius = 0.1
+agent_max_climb = 0.0
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_kry3j"]
+item/0/name = "base green ground"
+item/0/mesh = ExtResource("2_jjvhh")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
+size = Vector2(1391, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jjgbg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kry3j"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8239284, 0.5666939, 0, -0.5666939, 0.8239284, 0, 4.1421595, 2.9659152)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_jjgbg")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9366162, 0, 0, 0, 1, 0, 1, -4.5034695)
+use_collision = true
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh_library = SubResource("MeshLibrary_kry3j")
+cell_size = Vector3(1, 1, 1)
+bake_navigation = true
+data = {
+"cells": PackedInt32Array(65524, 65528, 1441792, 65532, 65530, 0, 65533, 65530, 655360, 65534, 65530, 0, 65534, 65529, 655360, 65532, 65529, 655360, 65533, 65529, 655360, 65531, 65530, 0, 65531, 65529, 655360, 65530, 65529, 655360, 65531, 65528, 655360, 65532, 65528, 655360, 65533, 65528, 655360, 65534, 65528, 655360, 65530, 65530, 655360, 65531, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 2, 65531, 0, 3, 65531, 0, 1, 65531, 0, 4, 65531, 0, 4, 65532, 0, 5, 65531, 0, 5, 65532, 0, 5, 65533, 0, 4, 65533, 0, 3, 65532, 0, 3, 65533, 0, 2, 65533, 0, 1, 65533, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 3, 65535, 0, 2, 65535, 0, 1, 65535, 0, 0, 65535, 0, 65535, 65535, 0, 65534, 65534, 0, 65533, 65534, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65533, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65535, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65531, 65533, 0, 65530, 65533, 0, 65532, 65533, 0, 65534, 0, 0, 65533, 0, 0, 65532, 65535, 0, 0, 0, 0, 65535, 0, 0, 65534, 1, 0, 65532, 0, 0, 65531, 65535, 0, 65531, 65534, 0, 65532, 65534, 0, 65533, 65535, 0, 65532, 65532, 0, 65531, 65532, 0, 65530, 65532, 0, 65529, 65532, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 0, 1, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 3, 1, 0, 1, 1, 0, 2, 1, 0, 4, 0, 0, 4, 65535, 0, 5, 65534, 0, 4, 1, 0, 5, 1, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 4, 3, 0, 4, 2, 0, 5, 65535, 0, 5, 0, 0, 3, 3, 0, 3, 2, 0, 1, 3, 0, 65534, 2, 0, 65535, 2, 0)
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ground2D" type="StaticBody2D" parent="."]
+position = Vector2(10.5, 334)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Player1" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(0, 305)
+disable_mode = 2
+script = ExtResource("2_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("CapsuleShape2D_jjgbg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1/CollisionShape2D"]
+position = Vector2(0, -4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_bo1nx")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="LeverMovement" type="RigidBody2D" parent="Objects" groups=["Grabable"]]
+position = Vector2(17, 314)
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("5_21xkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/LeverMovement"]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_kry3j")
+
+[node name="Lever" type="Sprite2D" parent="Objects/LeverMovement/CollisionShape2D"]
+texture = ExtResource("3_kry3j")
+
+[connection signal="grabMovement" from="Objects/LeverMovement" to="Player" method="_on_lever_movement_grab_movement"]

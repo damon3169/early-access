@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dqk4f0g0ejf1r"
+path="res://.godot/imported/structure-windmill.obj-df484165a4ac3841c4a9d460061dd01e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure-windmill.obj-df484165a4ac3841c4a9d460061dd01e.mesh"]
+
+source_file="res://Assets/3D/Kenney Golf Course/Models/OBJ format/structure-windmill.obj"
+dest_files=["res://.godot/imported/structure-windmill.obj-df484165a4ac3841c4a9d460061dd01e.mesh", "res://.godot/imported/structure-windmill.obj-df484165a4ac3841c4a9d460061dd01e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
